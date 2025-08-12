@@ -1,7 +1,9 @@
+import { usePromise } from "@raycast/utils";
+
 import { PROMPT_SYSTEM_MESSAGE } from "../const";
 import { Config } from "../types";
 import { createProviderModel } from "../use-cases/create-provider-model";
-import { usePromise } from "@raycast/utils";
+import { toMarkdownResponse } from "../use-cases/to-markdown-response";
 
 export function usePromptQuery({ query, config }: { query: string; config?: Config }) {
   const { isLoading, data, error } = usePromise(
@@ -22,7 +24,7 @@ export function usePromptQuery({ query, config }: { query: string; config?: Conf
         },
       ]);
 
-      return response.content.toString();
+      return toMarkdownResponse(response);
     },
     [query, config],
   );

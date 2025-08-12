@@ -45,5 +45,17 @@ function Prompt({ query, config }: { query: string; config: Config | undefined }
     );
   }
 
-  return <Detail markdown={data ?? "Loading..."} isLoading={isLoading} />;
+  return (
+    <Detail
+      markdown={data?.description ?? "Loading..."}
+      isLoading={isLoading}
+      actions={
+        data?.command ? (
+          <ActionPanel>
+            <Action.CopyToClipboard content={data?.command ?? ""} />
+          </ActionPanel>
+        ) : null
+      }
+    />
+  );
 }
