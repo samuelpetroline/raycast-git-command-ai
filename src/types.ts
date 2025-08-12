@@ -1,7 +1,7 @@
 export enum Provider {
   OPENAI = "OpenAI",
   ANTHROPIC = "Anthropic",
-  GEMINI = "Google Gemini"
+  GEMINI = "Google Gemini",
 }
 
 export type Config = {
